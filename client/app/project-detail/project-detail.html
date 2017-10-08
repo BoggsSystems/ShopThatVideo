@@ -1,0 +1,144 @@
+<div id="wrapper">
+	<div class="mask" id="project-detail">
+		<form name="projectForm" novalidate class="form-textarea">
+			<div ng-include="'components/navbar/project-detail-navbar.html'"></div>
+			<main id="main" role="main">
+				<div class="container">
+					<div class="top-hold box-hold">
+						<fieldset>
+							<input class="project-name" ng-model="project.name" placeholder="Project Name">
+						</fieldset>
+						<div class="holder-select custom-set">
+								<span class="name-select">Project status</span>
+								<select id="status" name="projectStatus" ng-model="project.active" ng-options="obj.value as obj.name for obj in [{ name: 'Disabled', value: false }, { name: 'Enabled', value: true }]">
+								</select>
+								<i class="fa fa-angle-down" aria-hidden="true"></i>
+						</div>
+						<div class="holder-select custom-set">
+							<span class="name-select">Project Category</span>
+							<select id="project-category" name="projectCategory" ng-model="project.category" ng-options="obj._id as obj.name for obj in projectCategories" required>
+								<option value> Select Category </option>
+							</select>
+							<i class="fa fa-angle-down" aria-hidden="true"></i>
+							<p class="lead" ng-show="(projectForm.$submitted || projectForm.projectCategory.$dirty) && projectForm.projectCategory.$error.required"> Project category required </p>
+						</div>
+						<div class="holder-select custom-set">
+							<span class="name-select">Private project?</span>
+							<select id="isPrivateProject" name="isPrivateProject" ng-model="project.isPrivate" ng-options="obj.value as obj.name for obj in [{ name: 'No', value: false }, { name: 'Yes', value: true }]">
+							</select>
+							<i class="fa fa-angle-down" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div class="wrap-columns">
+						<div class="column-left">
+							<fieldset>
+								<textarea class="description" name="description" placeholder="Description" ng-model="project.description" required></textarea>
+								<p class="lead" ng-if="(projectForm.$submitted || projectForm.description.$dirty) && projectForm.description.$error.required">
+									Project Description is required.
+								</p>
+							</fieldset>
+							<a href="#" class="btn" ng-click="openAddProductGroupModal()"><span></span>ADD PRODUCT GROUP</a>
+							<div class="table-inner">
+								<ul>
+									<li class="head-table">
+										<i>Product Groups</i>
+									</li>
+									<li class="row-list product-group" ng-repeat="productGroup in project.productGroupTimeLine">
+										<ul>
+											<li class="name-product-group">
+												<h3><a href="#" ng-class="{'active': productGroup._id === selectedProductGroup._id}" ng-click="selectProductGroup(productGroup)">{{ productGroup.title }}</a></h3>
+											</li>
+											<li>
+												<fieldset>
+													<input type="number" class="duration-sec" ng-model="productGroup.time" ng-blur="updateProductGroup(productGroup)">
+												</fieldset>
+											</li>
+											<li class="change-set">
+												<a href="#" ng-click="openAddProductGroupModal($index)"><i class="fa fa-pencil"></i></a>
+												<a href="#" ng-click="deleteItem('productGroup', productGroup, $index)"><i class="fa fa-times"></i></a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<a href="#" class="btn" ng-click="openAddProductModal()" ng-disabled="!selectedProductGroup"><span></span>ADD PRODUCT</a>
+							<div class="table-inner">
+								<ul>
+									<li class="head-table">
+										<i>Product</i>
+									</li>
+									<li class="row-list" ng-repeat="product in selectedProductGroup.products">
+										<ul>
+											<li class="name-product">
+												<h3><a href="#">{{ product.name }}</a></h3>
+											</li>
+											<li class="change-set">
+												<a href="#" ng-click="openAddProductModal($index)"><i class="fa fa-pencil"></i></a>
+												<a href="#" ng-click="deleteItem('product', product, $index)"><i class="fa fa-times"></i></a>
+											</li>
+										</ul>
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+						<div class="column-right">
+							<div class="settings-box direct_upload" 
+								ngf-drop="uploadFile($file, 'video')"
+								ngf-drag-over-class="dragOverClass($event)"
+								ng-model="videoFile">
+								<h3>Project Video</h3>
+								<div class="holder-conent">
+									<div class="wrap-img">
+										<div class="box-img" ng-click="openVideoModal(project)">
+											<img ng-src="{{ project.thumbnail.url }}" alt="{{ project.name }}">
+											<a href="#" class="fa fa-play"></a>
+										</div>
+										<span class="time">{{ (project.media.duration) | secondsToDateTime | date:'mm:ss' }}</span>
+									</div>
+									<div class="box-content">
+										<p>You can also drag and drop an video file into the dashed area.</p>
+										<a href="#" class="btn-default" ngf-select="uploadFile($file, 'video')" title="upload" resetOnClick="true"><span class="change">Change video</span><span class="add">add video</span></a>
+										<div class="status">{{videoUploadStatus}}</div>
+										<div class="progress-bar" ng-if="videoUploadProgress>0">
+										  <div class="progress" style="width: {{videoUploadProgress}}%"></div>
+										</div>
+										<p class="" ng-if="videoUploaded">Please submit the form to save video to project.</p>
+										<p class="lead" ng-if="projectForm.$submitted && !project.media.url">
+											Project Video is required.
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="settings-box set-img direct_upload"
+								ngf-drop="uploadFile($file, 'image')"
+								ngf-drag-over-class="dragOverClass($event)"
+								ng-model="imageFile">
+								<h3>Thumbnail image</h3>
+								<div class="holder-conent">
+									<div class="wrap-img">
+										<div class="box-img">
+											<img ng-src="{{project.thumbnail.url}}" alt="{{ project.name }}">
+										</div>
+									</div>
+									<div class="box-content">
+										<p>You can also drag and drop an video file into the dashed area.</p>
+										<a href="#" class="btn-default" ngf-select="uploadFile($file, 'image')" title="upload" resetOnClick="true"><span class="change">Change image</span><span class="add">add image</span></a>
+										<div class="status">{{imageUploadStatus}}</div>
+										<div class="progress-bar" ng-if="imageUploadProgress>0">
+										  <div class="progress" style="width: {{imageUploadProgress}}%"></div>
+										</div>
+										<p class="" ng-if="imageUploaded">Please submit the form to save thumbnail image to project.</p>
+										<p class="lead" ng-if="projectForm.$submitted && !project.thumbnail.url">
+											Project Thumbnail is required.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</form>
+	</div>
+</div>

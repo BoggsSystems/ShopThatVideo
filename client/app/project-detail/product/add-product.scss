@@ -1,0 +1,90 @@
+.add-product-modal, .search-amazon-modal {
+	
+	.modal-title {
+		font-weight: 600;
+	}
+
+	.modal-content {
+		background: #333;
+	}
+	.fa-times {
+		position: absolute;
+		font-size: 20px;
+		top: -10px;
+		right: 5px;
+		cursor: pointer;
+	}
+
+	.product-color, .product-size {
+	    height: 30px;
+	    width: 30px;
+	    margin: 5px;
+	    position: relative;
+
+	    .fa-times {
+	        bottom: -10px;
+	        right: -10px;
+	    }
+	}
+
+	.product-size {
+		width: auto;
+	}
+
+	.btn {
+		min-width: 10px;
+	}
+
+	.search-amazon {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+	}
+
+	input {
+		color: #555;
+	}
+
+	.search-container {
+		input {
+			width: 90%;
+			line-height: 32px;
+			font-size: 20px;
+			border-radius: 15px;
+		}
+
+		.fa-search {
+			font-size: 20px;
+			margin-left: 10px;
+			cursor: pointer;
+		}
+	}
+}
+
+.search-amazon-modal {
+	.modal-content {
+		min-height: 500px;
+	}
+
+	.searching-text {
+		margin-top: 20px;
+		margin-left: 10px;
+		font-weight: 600;
+	}
+	
+	.search-results {
+		width: 100%;
+		margin-top: 20px;
+		padding: 0 10px;
+		min-height: 200px;
+		max-height: 450px;
+		overflow: scroll;
+
+		.result {
+			padding: 10px;
+			&.even {
+				background: #4D4B4B;
+			}
+		}
+	}
+}

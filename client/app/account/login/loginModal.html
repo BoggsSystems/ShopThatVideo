@@ -1,0 +1,10 @@
+<div class="modal-header">
+  <button type="button" ng-click="$dismiss()" class="close">&times;</button>
+  <h4 class="modal-title"> Pending Approval</h4>
+</div>
+<div class="modal-body">
+  <p> Your account is in review and we will contact you as soon as you're approved. </p>
+</div>
+<div class="modal-footer">
+  <button ng-repeat="button in modal.buttons" ng-class="button.classes" ng-click="button.click($event)" ng-bind="button.text" class="btn"></button>
+</div>

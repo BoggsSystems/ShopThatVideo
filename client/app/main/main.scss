@@ -1,0 +1,27 @@
+
+
+/* main page */
+#main-page {
+
+    .project {
+        font-size: 20px;
+        margin: 5px;
+        display: inline-block;
+    }
+
+    .description {
+		display: block;
+		display: -webkit-box;
+		max-width: 400px;
+		max-height: 80px;
+		line-height: 1.4;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+}
+
+.vid_category {
+	color: #F5F5F7;
+}

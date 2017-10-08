@@ -1,0 +1,53 @@
+
+.navbar-text {
+  margin-left: 15px;
+}
+
+/* Project List page */
+#project-list {
+
+    .project {
+        font-size: 20px;
+        margin: 5px;
+        display: inline-block;
+    }
+
+    .description {
+		// display: block;
+		// display: -webkit-box;
+		// max-width: 400px;
+		// max-height: 80px;
+		// line-height: 1.4;
+		// -webkit-line-clamp: 4;
+		// -webkit-box-orient: vertical;
+		// text-overflow: ellipsis;
+		// overflow: hidden;
+
+		max-height: 100px;
+		overflow-y: scroll;
+    }
+
+    // ::-webkit-scrollbar {
+    //     -webkit-appearance: none;
+    //     width: 7px;
+    // }
+    // ::-webkit-scrollbar-thumb {
+    //     border-radius: 4px;
+    //     background-color: rgba(0,0,0,.5);
+    //     -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+    // }
+}
+
+.add-project-modal {
+	.modal-content {
+		background: #333;
+	}
+}
+
+#play-video {
+	.modal-title {
+		color: #000;
+		font-weight: 600;
+		font-size: 20px;
+	}
+}

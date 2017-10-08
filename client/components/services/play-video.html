@@ -1,0 +1,11 @@
+<div id="play-video">
+	<div class="modal-body">
+		<span class="close" ng-click="$close()"> X </span>
+		<h3 class="modal-title">{{ videoModalProject.name }}</h3>
+		<br>
+		<video class="img-responsive" ng-attr-preload="auto" controls ng-attr-poster="{{ trustSrc(videoModalProject.thumbnail.url) }}" ng-if="videoModalProject.media.url">
+			<source ng-src="{{ trustSrc(videoModalProject.media.url) }}" >
+			Your browser does not support the video tag.
+		</video>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+
+<div class="modal-body">
+	<h3 class="modal-title"> Amazon </h3>
+	<span class="fa fa-times" ng-click="$close()"> </span>
+	<br>
+	<div class="search-container">
+		<input type="search" placeholder="Search" name="search" ng-model="searchKeyword" ng-keyup="$event.keyCode == 13 && search(searchKeyword)">
+		<span class="fa fa-search" ng-click="search(searchKeyword)"> </span>
+	</div>
+	<h3 class="searching-text" ng-show="searchingAmazon"> Searching... </h3>
+	<div class="search-results container">
+		<div class="result row" ng-class="{'even': $even}" ng-repeat="product in searchResults">
+			<div class="col-xs-2">
+				<img ng-src="{{product.MediumImage[0].URL[0]}}">	
+			</div>
+			<div class="col-xs-8">
+				<h3> {{ product.ItemAttributes[0].Title[0] }} </h3>
+			</div>
+			<div class="col-xs-2">
+				<button class="btn btn-success" ng-click="populateProduct(product)"> USE </button>
+			</div>
+		</div>
+	</div>
+</div>

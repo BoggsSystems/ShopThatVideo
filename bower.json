@@ -1,0 +1,32 @@
+{
+  "name": "cms-shoppable",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": ">=1.2.*",
+    "json3": "~3.3.1",
+    "es5-shim": "~3.0.1",
+    "bootstrap-sass-official": "~3.1.1",
+    "bootstrap": "~3.1.1",
+    "angular-resource": ">=1.2.*",
+    "angular-cookies": ">=1.2.*",
+    "angular-sanitize": ">=1.2.*",
+    "angular-bootstrap": "~0.14.3",
+    "font-awesome": ">=4.1.0",
+    "lodash": "~2.4.1",
+    "angular-ui-router": "~0.2.15",
+    "cloudinary_ng": "~0.1.4",
+    "ng-file-upload": "~9.1.2",
+    "isteven-angular-multiselect": "~4.0.0",
+    "angular-color-picker": "angularjs-color-picker#~0.6.10",
+    "slick-carousel": "^1.6.0",
+    "angular-timeago": "^0.4.5"
+  },
+  "devDependencies": {
+    "angular-mocks": ">=1.2.*",
+    "angular-scenario": ">=1.2.*"
+  },
+  "resolutions": {
+    "lodash": "3.10.0",
+    "bootstrap": "~3.3.0"
+  }
+}

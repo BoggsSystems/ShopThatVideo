@@ -1,0 +1,78 @@
+<div id="add-product-group">
+	<div class="modal-body">
+		<h3 class="modal-title">Add product Group in project</h3>
+		<br>
+		<form name="productGroupForm" novalidate>
+			<div class="row">
+				<div class="col-md-6 col-lg-6">
+					<div class="form-group">
+						<input type="text" name="productGroupTitle" class="form-control " placeholder="Product Group Title" ng-model="productGroup.title" required>
+						<p class="text-danger" ng-show="(productGroupForm.$submitted || productGroupForm.productGroupTitle.$dirty) && productGroupForm.productGroupTitle.$error.required">
+							Product Group Title is required.
+						</p>
+					</div>
+					<div class="form-group">
+						<input type="text" name="productGroupSubtitle" class="form-control" placeholder="Product Group Subtitle" ng-model="productGroup.subtitle" required>
+						<p class="text-danger" ng-show="(productGroupForm.$submitted || productGroupForm.productGroupSubtitle.$dirty) && productGroupForm.productGroupSubtitle.$error.required">
+							Product Group Subtitle is required.
+						</p>
+					</div>
+					<div class="form-group">
+						<textarea name="productGroupDescription" ng-model="productGroup.description" rows="4" placeholder="Product Group Description" class="form-control" required>  </textarea>
+						<p class="text-danger" ng-show="(productGroupForm.$submitted || productGroupForm.productGroupDescription.$dirty) && productGroupForm.productGroupDescription.$error.required">
+							Product Group Description is required.
+						</p>
+					</div>
+					<div class="form-group">
+						<input type="url" name="productGroupUrl" ng-model="productGroup.makeThisYourLookURL" placeholder="Make This Your Look URL" class="form-control" required>
+						<p class="text-danger" ng-show="(productGroupForm.$submitted || productGroupForm.productGroupUrl.$dirty) && productGroupForm.productGroupUrl.$error.required">
+							Product Group Url is required.
+						</p>
+						<p class="text-danger" ng-show="(productGroupForm.$submitted || productGroupForm.productGroupUrl.$dirty) && productGroupForm.productGroupUrl.$error.url">
+							Product Group Url not valid.
+						</p>
+					</div>
+					<div class="form-group">
+						<input type="number" name="startTime" min="0" ng-model="productGroup.time" placeholder="Start Time (in seconds)" class="form-control" required>
+						<p class="text-danger" ng-show="(productGroupForm.$submitted || productGroupForm.startTime.$dirty) && productGroupForm.startTime.$error.required">
+							Product Group Start Time is required.
+						</p>
+						<p class="text-danger" ng-show="(productGroupForm.$submitted || productGroupForm.startTime.$dirty) && productGroupForm.startTime.$error.number">
+							Please enter valid start time.
+      					</p>
+      					<p class="text-danger" ng-show="(productGroupForm.$submitted || productGroupForm.startTime.$dirty) && productGroupForm.startTime.$error.min">
+							Start time can not be negative.
+      					</p>
+					</div>
+	    		</div>
+	    		<div class="col-md-6 col-lg-6 text-center">
+	    			<div class="row direct_upload"
+						ngf-drop="uploadFiles($file)"
+						ngf-drag-over-class="dragOverClass($event)"
+						ng-model="file">
+						<div class="form-group col-md-6 col-lg-6 col-sm-6 col-xs-12">
+							<p>You can also drag and drop an image file into the dashed area.</p>
+							<label>Thumbnail Image:</label>
+							<button class="btn btn-primary" ngf-select="uploadFiles($file)" title="upload" resetOnClick="true" >{{ productGroup.thumbnail.url?'Change Image':'Upload' }}</button>
+						</div>
+						<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+							<div class="status">{{uploadStatus}}</div>
+							<div class="progress-bar" ng-show="uploadProgress>0">
+							  <div class="progress" style="width: {{uploadProgress}}%"></div>
+							</div>
+							<img class="thumbnail-image img-responsive" ngf-src="productGroup.thumbnail.url || file">
+							<p class="text-success" ng-show="imageUploaded">Please submit the form to save thumbnail image to product group.</p>
+							<p class="text-danger" ng-show="productGroupForm.$submitted && !productGroup.thumbnail.url">
+								Product Group Thumbnail Image is required.
+							</p>
+						</div>
+					</div>
+	    		</div>
+			</div>
+			<div class="col-md-6 col-lg-6 text-right">
+		    		<button class="btn btn-success" type="submit" ng-click="save(productGroupForm.$valid, productGroup)" ng-disabled="disableButton">Save</button>
+		    		<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+		    </div>
+	    </form><br><br>
+	</div>
+</div>

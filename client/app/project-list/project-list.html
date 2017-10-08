@@ -1,0 +1,108 @@
+<div id="wrapper">
+	<div class="mask" id="project-list">
+		<div ng-include="'components/navbar/navbar.html'"></div>
+
+		<main id="main" role="main">
+			<div class="container">
+				<div class="box-hold">
+					<a href="#" class="btn" ng-click="addProject()"><span></span>ADD NEW PROJECT</a>
+				</div>
+				<h2 ng-show="loadingProjects"> Loading your projects... </h2>
+				<h2 ng-if="!loadingProjects && projectList.length === 0"> You done have any projects. Add one now !!</h2>
+				<ul class="accordion" ng-repeat="project in projectList | orderBy: '-createdAt'">
+					<li class="active" >					
+						<div class="holder">
+							<ul class="top-table">
+								<li class="title-block">
+									<div class="wrap-img">
+										<div class="box-img">
+											<!-- <video class="img-responsive" preload="auto" controls ng-src="{{ trustSrc(project.media.url) }}" ng-if="project.media.url">
+												Your browser does not support the video tag.
+											</video> -->
+											<img ng-src="{{ project.thumbnail.url }}">
+										</div>
+										<!-- <i>{{ (project.media.duration) | secondsToDateTime | date:'mm:ss' }}</i> -->
+									</div>
+									<div class="box-content">
+										<h2 ng-class="{'published': project.active}">
+											<a href="#">{{ project.name }}</a>
+											<span ng-if="project.isPrivate" ng-class="{'private': project.isPrivate}" ng-click="openIframeInfo(project)"></span>
+										</h2>
+										<p class="description">{{ project.description }}</p>
+										<!-- <div class="holder-img">
+											<img src="assets/images/rectangle-1.png" alt="rectangle">
+										</div> -->
+									</div>
+								</li>							
+								<li>{{project.stats.videoWatchCount}}<br>
+								<i>Watches</i></li>
+								<li>{{project.stats.videoPauseCount}}<br>
+								<i>Pauses</i></li>
+								<li>{{project.stats.videoClickCount}}<br>
+								<i>Clicks</i></li>
+								<li>{{project.stats.buyNowClickCount}}<br>
+								<i>Buy Nows</i></li>
+								<li>{{project.stats.watchCount}}<br>
+								<i>Sales</i></li>
+								<li></li>
+								<li class="change-set">
+									<a ui-sref="project-detail({ projectId: project._id })"><i class="fa fa-pencil"></i></a>
+								</li>
+							</ul>							
+							<div class="holder-opener">
+								<a class="open-table" href="#" >
+									<span class="fa fa-angle-up" ng-click="openProductGroups(project, $index, 'hide')"  ng-show="currentProjectIndex === $index">Hide groups</span>
+									<span class="fa fa-angle-down"   ng-click="openProductGroups(project, $index, 'show')" ng-show="currentProjectIndex !== $index">Show groups</span>
+								</a>
+							</div>
+						</div>
+						
+						<div class="table-inner" ng-if="currentProjectIndex === $index">
+							<ul>
+								<li class="head-table">
+									<ul>
+										<li>Products</li>
+										<li>Pauses</li>
+										<li>Clicks</li>
+										<li>Buy Nows</li>
+										<li>Sales</li>
+										<!-- <li>CVR</li> -->
+										<li class="empty"></li>
+									</ul>
+								</li>
+								<li ng-if="currentProductGroups.length === 0"> 
+									<ul> <li class="view-post">No products to display </li> </ul>
+								</li>
+								<div ng-repeat="productGroup in currentProductGroups">
+									<li class="row-list border-blue" ng-repeat="product in productGroup.products">
+										<ul>
+											<li class="view-post">
+												<div class="box-img">
+													<a href="#"><img ng-src="{{product.images[0].url}}" ></a>
+													<i class="fa fa-camera" aria-hidden="true"></i>
+												</div>
+												<div class="title-post">
+													<h3><a href="#">{{product.name}}</a></h3>
+													<p> in {{productGroup.title}}</p>	
+												</div>
+											</li>						
+											
+											<li>{{productGroup.stats.pauseCount}}</li>
+											<li>{{product.stats.clickCount}}</li>
+											<li>{{product.stats.clickBuyNowCount}}</li>
+											<li>12</li>
+											<!-- <li>2%</li> -->
+											
+											<li class="set-post"><a href="#" ng-click="editProduct(project, productGroup, product)"><i class="fa fa-pencil"></i></a>
+											</li>
+										</ul>
+									</li>
+								</div>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</main>
+	</div>
+</div>

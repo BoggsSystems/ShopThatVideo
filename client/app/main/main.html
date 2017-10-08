@@ -1,0 +1,311 @@
+<div id="main_wrap">
+		<div id="main_prod">
+				<div id="main_head">
+						<div class="main_cont">
+								<div class="main_item">
+										<svg viewbox="0 0 190 36" class="logo logo_c_w"><use xlink:href="/assets/images/assets.svg#logo"></use></svg>
+								</div>
+								<div class="main_item">
+										<a id="menu_learnmore" class="prod_s_l text_w_l text_c_w" href="#">LEARN MORE</a>
+										<a class="prod_s_l text_w_l text_c_w" href="#" ng-click="openEmailModal()">CREATE</a>
+								</div>
+						</div>
+				</div>
+				<div id="main_vids">
+						<div class="main_cont">
+								<div id="vids_menu" class="main_item">
+										<div id="vids_menu_items" class="prod_s_m text_w_l text_c_b">
+												<!-- The first 2-3 items in the video categories will be visible on mobile - change the order as you see fit -->
+												<a href="#" ng-click="testFun()">Music</a>
+												<a href="#" class="selected">Beauty</a>
+												<a href="#">Cosmetics</a>
+												<a href="#">Movies</a>
+												<a href="#">Games</a>
+												<a href="#">Books & Audible</a>
+												<a href="#">Toys, Kids & Baby</a>
+												<a href="#">Electronics & Computers</a>
+										</div>
+										<div id="vids_menu_more" class="prod_s_m text_w_l text_c_w">
+												<a href="#">more...</a>
+										</div>
+										<div id="vids_menu_search">
+												&nbsp;
+										</div>
+								</div>
+								<div id="vids_area" class="main_item">
+										<!-- Video item - use as template for all videos to be loaded -->
+										<!-- Add ng-click on .vid_wrap and .vid_title -->
+										<div class="vid_item" ng-repeat="project in projectList">
+												<div class="vid_wrap" index="{{$index}}" id="{{project._id}}">
+														<div class="vid_video" style="background-image: url('{{project.thumbnail.url}}')">
+																<div class="vid_info">
+																		<div>{{ project.stats.productCount }} products</div>
+																		<div>{{ (project.media.duration) | secondsToDateTime | date:'mm:ss' }}</div>
+																</div>
+														</div>
+												</div>
+												<div class="vid_desc">
+														<div class="vid_title">
+															{{ project.name }}
+															<span class="vid_category pull-right"> {{ project.category.name }} </span>
+														</div>
+														<div class="vid_author">{{ project.createdBy.name }}</div>
+														<div class="vid_stats">
+																<span>{{ project.stats.videoWatchCount }} views</span>
+																<span>{{ project.createdAt | timeAgo }}</span>
+														</div>
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+		<div id="main_pres">
+				<div class="section_main gray">
+						<div class="section_wrap">
+								<div class="section_cont">
+										<div class="section_item">
+												<span class="text_s_l text_w_l text_c_b">An exciting new way to shop</span>
+												<div class="dia_main">
+														<div class="dia_row">
+																<div class="dia_item">
+																		<div class="dia_item_icon">
+																				<svg class="icon_small icon_c_w"><use xlink:href="/assets/images/assets.svg#view"></use></svg>
+																		</div>
+																		<div class="dia_item_text">
+																				<span class="text_s_s text_w_l text_c_w">Watch video</span>
+																		</div>
+																</div>
+														</div>
+														<div class="dia_body dia_c_g">
+																<div class="dia_row">
+																		<div class="dia_item">
+																				<div class="dia_item_icon">
+																						<svg class="icon_small icon_c_w"><use xlink:href="/assets/images/assets.svg#cart"></use></svg>
+																				</div>
+																				<div class="dia_item_text">
+																						<span class="text_s_s text_w_l text_c_w">Shopping cart</span>
+																				</div>
+																		</div>
+																		<div class="dia_item">
+																				<div class="dia_item_icon">
+																						<svg class="icon_small icon_c_w"><use xlink:href="/assets/images/assets.svg#touch"></use></svg>
+																				</div>
+																				<div class="dia_item_text">
+																						<span class="text_s_s text_w_l text_c_w">Tap the screen</span>
+																				</div>
+																		</div>
+																</div>
+														</div>
+														<div class="dia_row">
+																<div class="dia_item">
+																		<div class="dia_item_icon">
+																				<svg class="icon_small icon_c_w"><use xlink:href="/assets/images/assets.svg#product"></use></svg>
+																		</div>
+																		<div class="dia_item_text">
+																				<span class="text_s_s text_w_l text_c_w">Product info</span>
+																		</div>
+																</div>
+														</div>
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div class="section_main">
+						<div class="section_wrap">
+								<div class="section_cont">
+										<div class="section_item">
+												<svg class="icon_large icon_c_b"><use xlink:href="/assets/images/assets.svg#rocket"></use></svg>
+												<span class="text_s_l text_w_l text_c_g">Boost your Video Marketing conversion rates <span class="text_w_m">with ShopThatVideo</span></span>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div class="section_main blue">
+						<div class="section_wrap">
+								<div class="section_cont">
+										<div class="section_item no_center">
+												<svg class="icon_large icon_c_w"><use xlink:href="/assets/images/assets.svg#thumb_down"></use></svg>
+												<span class="text_s_m text_w_l text_c_w">Only about 22% of businesses are satisfied with their conversion rates.<br/><span class="text_s_s text_w_b"><em>Econsultancy, 2016</em></span></span>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div class="section_main">
+						<div class="section_wrap">
+								<div class="section_cont">
+										<div class="section_item">
+												<svg class="icon_large icon_c_b"><use xlink:href="/assets/images/assets.svg#devices"></use></svg>
+												<span class="text_s_m text_w_l text_c_b">There are an estimated <span class="text_w_b">4 billion</span> smartphone users in the world today. By 2020, that number is expected to grow to 6.1 billion.</span>
+										</div>
+										<div class="section_item">
+												<svg class="icon_large icon_c_b"><use xlink:href="/assets/images/assets.svg#piechart"></use></svg>
+												<span class="text_s_m text_w_l text_c_b"><span class="text_w_b">82%</span> of these users say they consult their phones on purchases they are about to make in a store.</span>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div class="section_main gray">
+						<div class="section_wrap">
+								<div class="section_cont">
+										<div class="section_item">
+												<svg class="icon_large icon_c_b"><use xlink:href="/assets/images/assets.svg#graph"></use></svg>
+												<span class="text_s_m text_w_l text_c_w"><span class="text_w_b">250 billion</span> purchase decisions made per year on <span class="text_w_b">6.1 billion</span> mobile devices and growing rapidly.</span>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div class="section_main">
+						<div class="section_wrap">
+								<div class="section_cont">
+										<div class="section_item">
+												<svg class="icon_large icon_c_g"><use xlink:href="/assets/images/assets.svg#video"></use></svg>
+												<span class="text_s_m text_w_l text_c_b"><span class="text_w_b">Four times</span> as many customers would rather watch a video about a product than read about it.</span>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div class="section_main blue">
+						<div class="section_wrap">
+								<div class="section_cont section_mid">
+										<div class="section_item">
+												<svg class="icon_large icon_c_w"><use xlink:href="/assets/images/assets.svg#conversion"></use></svg>
+												<span class="text_s_m text_w_l text_c_w">The video marketing conversion funnel is the same today as it was 30 years ago.</span>
+										</div>
+										<div class="section_item">
+												<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="440px" height="520px" viewBox="0 0 440 520" xml:space="preserve" class="funnel">
+													<linearGradient id="gradient" gradientUnits="userSpaceOnUse" x1="0" y1="61" x2="220" y2="61">
+															<stop offset="0" style="stop-color: #FFFFFF"></stop>
+															<stop offset="1" style="stop-color: #FFFFFF; stop-opacity: 0"></stop>
+													</linearGradient>
+
+													<path fill="url(#gradient)" opacity="0.2" d="M220,71.82L7,122L0,50L220,0V71.82z"></path>
+													<path fill="#FFFFFF" opacity="0.2" d="M28,152l27,72l378-102l7-72L28,152z M110,326l275-102l27-72L70,254L110,326z M145,428l186-102l39.05-70.06L125,356L145,428z"></path>
+													<path fill="#FFFFFF" d="M0,50l7,72h426l7-72H0z M55,224h330l27-72H28L55,224z M110,326h221l40-72H70L110,326z M145,428h151l20-72H125L145,428z"></path>
+													<path fill="#709efc" opacity="0.1" d="M399,50l-7,72h21l7-72H399z M344,224h21l27-72h-21L344,224z M290,326h21l40-72h-21L290,326z M255,428h21l20-72h-21L255,428z"></path>
+													<path fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M177.5,517v-70 M154.01,493.51L177.5,517l23.49-23.49 M267.99,465.8v40 M254.57,492.37l13.42,13.42l13.42-13.42 M222.5,438.37v30 M212.43,458.31l10.07,10.07l10.07-10.07"></path>
+													
+													<text text-anchor="middle" x="220" y="97">Impression</text>
+													<text text-anchor="middle" x="220" y="199">View</text>
+													<text text-anchor="middle" x="220" y="301">Engage</text>
+													<text text-anchor="middle" x="220" y="403">Sale</text>
+												</svg>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div class="section_main">
+						<div class="section_wrap pad_top">
+								<div class="section_cont">
+										<div class="section_item">
+												<span class="text_s_l text_w_l text_c_g">The ecosystem</span>
+												<div class="dia_main dia_top">
+														<div class="dia_row">
+																<div class="dia_item">
+																		<div class="dia_item_icon">
+																				<svg class="icon_small icon_c_b"><use xlink:href="/assets/images/assets.svg#camera"></use></svg>
+																		</div>
+																		<div class="dia_item_text">
+																				<span class="text_s_s text_w_l text_c_b">Select products, create video</span>
+																		</div>
+																</div>
+														</div>
+														<div class="dia_body dia_c_w">
+																<div class="dia_row">
+																		<div class="dia_item">
+																				<div class="dia_item_icon">
+																						<svg class="icon_small icon_c_b"><use xlink:href="/assets/images/assets.svg#analytics"></use></svg>
+																				</div>
+																				<div class="dia_item_text">
+																						<span class="text_s_s text_w_l text_c_b">Measure success with analytics</span>
+																				</div>
+																		</div>
+																		<div class="dia_item">
+																				<div class="dia_item_icon">
+																						<svg class="icon_small icon_c_b"><use xlink:href="/assets/images/assets.svg#shoppable"></use></svg>
+																				</div>
+																				<div class="dia_item_text">
+																						<span class="text_s_s text_w_l text_c_b">Make it a shoppable video in 5 minutes</span>
+																				</div>
+																		</div>
+																</div>
+																<div class="dia_marker">Marketers</div>
+														</div>
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div class="section_main gray">
+						<div class="section_wrap pad_bot">
+								<div class="section_cont">
+										<div class="section_item">
+												<div class="dia_main dia_bot">
+														<div class="dia_body dia_c_g">
+																<div class="dia_marker">Shoppers</div>
+																<div class="dia_row">
+																		<div class="dia_item">
+																				<div class="dia_item_icon">
+																						<svg class="icon_small icon_c_w"><use xlink:href="/assets/images/assets.svg#product"></use></svg>
+																				</div>
+																				<div class="dia_item_text">
+																						<span class="text_s_s text_w_l text_c_w">Delivery</span>
+																				</div>
+																		</div>
+																		<div class="dia_item">
+																				<div class="dia_item_icon">
+																						<svg class="icon_small icon_c_w"><use xlink:href="/assets/images/assets.svg#publish"></use></svg>
+																				</div>
+																				<div class="dia_item_text">
+																						<span class="text_s_s text_w_l text_c_w">Publish to social media</span>
+																				</div>
+																		</div>
+																</div>
+														</div>
+														<div class="dia_row">
+																<div class="dia_item">
+																		<div class="dia_item_icon">
+																				<svg class="icon_small icon_c_w"><use xlink:href="/assets/images/assets.svg#cart"></use></svg>
+																		</div>
+																		<div class="dia_item_text">
+																				<span class="text_s_s text_w_l text_c_w">Shopping cart</span>
+																		</div>
+																</div>
+																<div class="dia_item">
+																		<div class="dia_item_icon">
+																				<svg class="icon_small icon_c_w"><use xlink:href="/assets/images/assets.svg#view"></use></svg>
+																		</div>
+																		<div class="dia_item_text">
+																				<span class="text_s_s text_w_l text_c_w">View, engage</span>
+																		</div>
+																</div>
+														</div>
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+		<div id="main_foot">
+				<div class="section_main">
+						<div class="section_wrap">
+								<div class="section_cont">
+										<div class="section_item">
+												<svg viewbox="0 0 190 36" class="logo logo_c_b"><use xlink:href="/assets/images/assets.svg#logo"></use></svg>
+										</div>
+										<div class="section_item">
+												<div id="foot_social">
+														<a href="https://facebook.com/profile.php?id=1403198766379183&tsid=0.9559243526309729&source=typeahead" target="_blank"><svg class="logo_c_w"><use xlink:href="/assets/images/assets.svg#icon_fbk"></use></svg></a>
+														<a href="https://twitter.com/ShopThatVideo?p=s" target="_blank"><svg class="logo_c_w"><use xlink:href="/assets/images/assets.svg#icon_twt"></use></svg></a>
+														<a href="#" target="_blank"><svg class="logo_c_w"><use xlink:href="/assets/images/assets.svg#icon_lkd"></use></svg></a>
+												</div>
+												<div id="foot_copy">
+														<span>Copyright &copy; 2017 ShopThatVideo.<br />All rights reserved.</span>
+												</div>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+</div>

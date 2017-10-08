@@ -1,0 +1,122 @@
+
+<div class="modal-body">
+	<h3 class="modal-title">Add product in {{ productGroup.title }}</h3>
+	<span class="btn btn-default search-amazon" ng-click="searchAmazon()"> Search Amazon </span>
+	<br>
+	<form name="productForm" novalidate>
+		<div class="row">
+			<div class="col-md-6 col-lg-6">
+				<div class="form-group">
+					<label> Product Name </label>
+					<input type="text" name="name" class="form-control " placeholder="Product Name" ng-model="product.name" required>
+					<p class="text-danger" ng-show="(productForm.$submitted || productForm.name.$dirty) && productForm.name.$error.required">
+						Product Title is required.
+					</p>
+				</div>
+				<div class="form-group">
+					<label> Product Subtitle </label>
+					<input type="text" name="subtitle" class="form-control " placeholder="Product Subtitle" ng-model="product.subtitle" required>
+					<p class="text-danger" ng-show="(productForm.$submitted || productForm.subtitle.$dirty) && productForm.subtitle.$error.required">
+						Product Subtitle is required.
+					</p>
+				</div>
+				<div class="form-group">
+					<label> Product Description </label>
+					<textarea name="description" ng-model="product.description" rows="4" placeholder="Product Description" class="form-control" required>  </textarea>
+					<p class="text-danger" ng-show="(productForm.$submitted || productForm.description.$dirty) && productForm.description.$error.required">
+						Product Description is required.
+					</p>
+				</div>
+				<div class="form-group">
+					<label> Product Price </label>
+					<input type="text" name="price" class="form-control" placeholder="Product Price" ng-model="product.price" required>
+					<p class="text-danger" ng-show="(productForm.$submitted || productForm.price.$dirty) && productForm.price.$error.required">
+						Product Price is required.
+					</p>
+				</div>
+				<div class="form-group">
+					<label> Product Url </label>
+					<input type="url" name="makeThisYourLookURL" id="productURL" class="form-control" placeholder="Product URL" ng-model="product.makeThisYourLookURL" required>
+					<p class="text-danger" ng-show="(productForm.$submitted || productForm.makeThisYourLookURL.$dirty) && productForm.makeThisYourLookURL.$error.required">
+						Product Url is required.
+					</p>
+					<p class="text-danger" ng-show="(productForm.$submitted || productForm.makeThisYourLookURL.$dirty) && productForm.makeThisYourLookURL.$error.url">
+						Product Url not valid.
+					</p>
+				</div>
+				<div class="form-group">
+					<label> Sizes </label>
+					<!-- <div isteven-multi-select
+					    input-model="sizeList"
+					    output-model="product.sizes"
+					    button-label="value"
+					    item-label="value"
+					    tick-property="ticked"
+					    max-height="100px"
+					    output-properties="value">
+					</div> -->
+					<div class="row">
+						<div class="col-xs-6">
+							<input type="text" name="size" size="12" ng-model="size" placeholder="Product Size">
+							<button type="button" class="btn btn-primary" ng-click="addProductSize()">Add Size</button>
+						</div>
+						<div class="col-xs-6 size-list-container">
+							<div class="product-size img-thumbnail" ng-repeat="size in product.sizes" ng-style="{'background-color':'#333'}">
+								<span class="fa fa-times" ng-click="product.sizes.splice($index,1)"></span>
+								{{ size }}
+							</div>	
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label> Product Colors </label>
+					<div class="row">
+						<div class="col-xs-8">
+							<color-picker ng-model="currentColor" 
+								color-picker-format="'rgb'"
+								color-picker-pos="'top right'">
+							</color-picker>		
+						</div>
+						<div class="col-xs-4">
+							<button type="button" class="btn btn-primary" ng-click="addProductColor()">Add Color</button>
+						</div>
+					</div>
+					<div class="color-list-container">
+						<div class="product-color img-thumbnail" ng-repeat="color in product.colors" ng-style="{'background-color':color}">
+							<span class="fa fa-times" ng-click="product.colors.splice($index,1)"></span>
+						</div>
+					</div>
+				</div>
+    		</div>
+    		<div class="col-md-6 col-lg-6 text-center">
+    			<span class="fa-2x"> Images </span>
+    			<!-- <button class="btn btn-primary pull-right" ng-click="addImageBlock()"> Add Image</button> -->
+    			<div class="row direct_upload" 
+				ngf-drop="uploadFile($file, $index)"
+				ngf-drag-over-class="dragOverClass($event)"
+				ng-model="file">
+					<label>Thumbnail Image:</label>
+					<button class="btn btn-primary" ngf-select="uploadFile($file)" title="upload" resetOnClick="true" >{{ image.url?'Change Image':'Upload' }}</button>
+					<p>You can also drag and drop an image file into the dashed area.</p>
+					<div class="status">{{uploadStatus}}</div>
+					<div class="progress-bar" ng-show="uploadProgress>0">
+					  <div class="progress" style="width: {{uploadProgress}}%"></div>
+					</div>
+					<p class="text-danger" ng-show="productForm.$submitted && product.images.length == 0">
+						Add atleast one product image.
+					</p>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-lg-6 col-sm-6" ng-repeat="image in product.images">
+						<img class="thumbnail-image img-responsive" ngf-src="image.url">
+						<span class="fa fa-times" ng-click="product.images.splice($index, 1)"></span>
+					</div>
+				</div>
+    		</div>
+		</div>
+		<div class="col-md-6 col-lg-6 text-right">
+    		<button class="btn btn-success" type="submit" ng-click="save(productForm.$valid, product)" ng-disabled="disableButton">Save</button>
+    		<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    	</div>
+    </form><br><br>
+</div>
