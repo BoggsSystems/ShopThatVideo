@@ -9,9 +9,7 @@ module.exports = {
             undefined,
 
   // Server port
-  port:     process.env.OPENSHIFT_NODEJS_PORT ||
-            process.env.PORT ||
-            8080,
+  port:     process.env.PORT,
 
   // MongoDB connection options
   mongo: {
