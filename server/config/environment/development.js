@@ -5,8 +5,8 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/cmsshoppable-dev'
+    uri: 'mongodb://jboggs:Asdf890#123@ds121495.mlab.com:21495/sandbox'
   },
 
-  seedDB: false
+  seedDB: true
 };
