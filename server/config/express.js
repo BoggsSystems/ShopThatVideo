@@ -38,7 +38,7 @@ module.exports = function(app) {
   };
   app.use(allowCrossDomain);
   if ('production' === env) {
-    app.use(express.static(path.join(config.root, 'client')));
+    app.use(express.static(config.root));
     app.set('appPath', path.join(config.root, 'client'));
     app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
     app.use(morgan('dev'));
